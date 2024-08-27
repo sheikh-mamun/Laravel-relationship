@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="text-center">
-        <h1>Relationship ->one to one</h1>
+        <h1>Relationship ->Many to many</h1>
         <br>
           <button class="btn btn-md btn-success"> Create</button>
         </a>
@@ -19,22 +19,21 @@
         <table class="table table-striped">
             <thead>
               <tr>
-                <th>Id</th>
-                <th>Post</th>
-                <th>comments</th>
+                <th>ID</th>
+                <th>Role</th>
+                <th>User</th>
               </tr>
             </thead>
             <tbody>
-                @foreach( $post as $data)
-              <tr>
-                <td>{{ $data->id}}</td>
+                @foreach( $users as $data)
+              <tr class="table-primary">
+              <th scope="row">{{ $loop->iteration }}</th>
                 <td>{{ $data->name}}</td>
                 <td>
-                    @foreach( $data->comments as $d)
-                        {{ $d->name}} </br>
-                    @endforeach
+                        @foreach( $data->users as $pp)
+                            {{ $pp->name}}
+                        @endforeach
                 </td>
-                <td></td>
               </tr>
                @endforeach
             </tbody>
